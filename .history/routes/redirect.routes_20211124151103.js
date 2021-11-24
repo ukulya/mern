@@ -1,0 +1,14 @@
+const {Router} = require('express');
+const Link = require('../models/Link');
+const router = Router();
+
+router.get('/:code',async(req,res) => {
+    try {
+        const links = await Link.findById(req.params.id)
+        res.json(links)
+    } catch (e) {
+       res.status(500).json({message:'something went wrong'})
+    }
+})
+
+module.exports = router;
